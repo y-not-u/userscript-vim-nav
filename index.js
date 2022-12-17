@@ -1,12 +1,15 @@
 // ==UserScript==
 // @name         Vim Style Navigation
-// @namespace    http://tampermonkey.net/
+// @name:zh-cn   Vim风格的导航
+// @namespace    http://www.vatery.com/
 // @version      1.0
 // @description  Scroll smoothly. Use (h,j,k,l) to scroll around.  gg to go to top G to to bottom. d to PageDown u to PageUp.
+// @description:zh-cn 顺滑的滚动；使用j/k上下滚动，gg到顶部，G到底部
 // @author       y-not-u
+// @license      MIT
 // @match        http*://*
-// @match		 *://*/*
-// @match		 *
+// @match		     *://*/*
+// @match		     *
 // @grant        none
 // ==/UserScript==
 
@@ -16,7 +19,8 @@
 
 	document.onkeypress = function (e) {
 		// if user is typing inside of a text box return
-		if ( e.target.nodeName == 'INPUT' ) return;
+    var nodeName = e.target.nodeName;
+		if (nodeName == 'INPUT' || nodeName == 'TEXTAREA' ) return;
 		// event
 		e = e || window.event;
 		// horizontal and vertical
